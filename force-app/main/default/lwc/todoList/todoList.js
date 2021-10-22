@@ -1,3 +1,4 @@
+//@ts-check
 import { LightningElement, api } from 'lwc';
 
 export default class TodoList extends LightningElement {
@@ -7,7 +8,7 @@ export default class TodoList extends LightningElement {
     // a new array to filteredTodos, the track decorator is not required.
     filteredTodos = [];
 
-    _todos = [];
+
 
     priorityFilter = false;
 
@@ -20,9 +21,25 @@ export default class TodoList extends LightningElement {
         this.filterTodos();
     }
 
+    /**
+     * @typedef {Object} TodoJsDoc
+     * @property {number} id
+     * @property {string} description
+     * @property {boolean} priority
+     */
+
+    /** @type {TodoJsDoc[]} */
+    _todosJsDocTyped = []
+
+    /** @type {TodoTypescript[]} */
+    _todos = []
+
     filterTodos() {
         if (this.priorityFilter) {
             this.filteredTodos = this._todos.filter(
+                (todo) => todo.priority === true
+            );
+            this.filteredTodos = this._todosJsDocTyped.filter(
                 (todo) => todo.priority === true
             );
         } else {

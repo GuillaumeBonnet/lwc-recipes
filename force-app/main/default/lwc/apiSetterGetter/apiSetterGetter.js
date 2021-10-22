@@ -3,6 +3,7 @@ import { LightningElement } from 'lwc';
 export default class ApiSetterGetter extends LightningElement {
     lastTodoId = 2;
 
+    // todos data shape shown here
     todos = [
         { id: 1, description: 'Explore recipes', priority: true },
         { id: 2, description: 'Install Ebikes sample app', priority: false }
